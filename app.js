@@ -6,6 +6,7 @@
 // --- Game State & Configuration ---
 const STATE = {
     role: null, // 'denizen' | 'occupier'
+    location: 'portland', // 'portland' | 'newyork'
     day: 1,
     resources: {},
     history: [],
@@ -41,6 +42,7 @@ const dom = {
     dashboard: document.getElementById('game-dashboard'),
     btnDenizen: document.getElementById('btn-denizen'),
     btnOccupier: document.getElementById('btn-occupier'),
+    locBtns: document.querySelectorAll('.loc-btn'),
     statsContainer: document.getElementById('stats-container'),
     actionContainer: document.getElementById('action-container'),
     narrativeLog: document.getElementById('narrative-log'),
@@ -52,6 +54,15 @@ const dom = {
 function init() {
     dom.btnDenizen.addEventListener('click', () => startGame('denizen'));
     dom.btnOccupier.addEventListener('click', () => startGame('occupier'));
+
+    // Location Toggles
+    dom.locBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            dom.locBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            STATE.location = e.target.getAttribute('data-loc');
+        });
+    });
 }
 
 function startGame(role) {
@@ -114,6 +125,13 @@ function generateDailyEvent() {
 
     // Special Scripted Events
     if (STATE.day === 1 && STATE.role === 'denizen') {
+        // Flavor text based on location?
+        if (STATE.location === 'newyork') {
+            // Can swap out event title or text dynamically here
+            MIDTOWN_ESCAPE_EVENT.title = "Manhattan Under Siege";
+        } else {
+            MIDTOWN_ESCAPE_EVENT.title = "Midtown Under Siege";
+        }
         event = MIDTOWN_ESCAPE_EVENT;
     } else {
         event = getEventForRole(STATE.role);
