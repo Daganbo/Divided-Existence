@@ -125,14 +125,14 @@ function generateDailyEvent() {
 
     // Special Scripted Events
     if (STATE.day === 1 && STATE.role === 'denizen') {
-        // Flavor text based on location?
+        const eventTemplate = { ...MIDTOWN_ESCAPE_EVENT }; // Shallow copy to avoid permanent mutation
+
         if (STATE.location === 'newyork') {
-            // Can swap out event title or text dynamically here
-            MIDTOWN_ESCAPE_EVENT.title = "Manhattan Under Siege";
+            eventTemplate.title = "Manhattan Under Siege";
         } else {
-            MIDTOWN_ESCAPE_EVENT.title = "Midtown Under Siege";
+            eventTemplate.title = "Downtown Under Siege";
         }
-        event = MIDTOWN_ESCAPE_EVENT;
+        event = eventTemplate;
     } else {
         event = getEventForRole(STATE.role);
     }
