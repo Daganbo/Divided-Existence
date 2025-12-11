@@ -64,7 +64,7 @@ body {
     width: 100%;
     text-align: center;
     animation: fadeIn 1s ease-out;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('cover.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('./cover.jpg');
     background-size: cover;
     background-position: center;
     position: absolute;
