@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanctuary City: Divided</title>
+    <meta name="description"
+        content="A narrative simulation of a city under occupation. Play as the oppressed or the oppressor.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Main Menu -->
+        <section id="main-menu" class="screen active">
+            <h1 class="title">Sanctuary City</h1>
+            <h2 class="subtitle">Divided Existence</h2>
+            <div class="menu-options">
+                <button id="btn-denizen" class="btn-primary" data-role="denizen">
+                    <span class="role-title">The Denizen</span>
+                    <span class="role-desc">Survive. Hide. Resist.</span>
+                </button>
+                <div class="divider">VS</div>
+                <button id="btn-occupier" class="btn-primary" data-role="occupier">
+                    <span class="role-title">The Occupier</span>
+                    <span class="role-desc">Control. Enforce. Order.</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Game Dashboard -->
+        <section id="game-dashboard" class="screen hidden">
+            <header class="game-header">
+                <div class="stats-bar" id="stats-container">
+                    <!-- Dynamic Stats Injected Here -->
+                </div>
+                <div class="turn-indicator">
+                    Day: <span id="day-counter">1</span>
+                </div>
+            </header>
+
+            <main class="game-main">
+                <div class="narrative-log" id="narrative-log">
+                    <p class="log-entry system">Welcome to the simulation. Select a decision to begin.</p>
+                </div>
+
+                <div class="scene-visual" id="scene-container">
+                    <!-- Placeholder for situational mood/visuals -->
+                    <div class="mood-light"></div>
+                </div>
+            </main>
+
+            <footer class="action-panel" id="action-container">
+                <!-- Dynamic Actions Injected Here -->
+            </footer>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

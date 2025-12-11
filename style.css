@@ -1,0 +1,237 @@
+:root {
+    /* Color Palette - Oppressive & Stark */
+    --bg-color: #0a0a0c;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    
+    --accent-denizen: #dfa66a; /* Worn Gold/Dust */
+    --accent-occupier: #4a6fa5; /* Cold Steel Blue */
+    
+    --danger: #cf4545;
+    --success: #5dae76;
+    --panel-bg: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 900px;
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Utilities */
+.hidden { display: none !important; }
+.active { display: flex !important; }
+
+/* Main Menu */
+#main-menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to bottom, #fff, #777);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn-primary {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.role-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.role-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+#btn-denizen:hover { border-color: var(--accent-denizen); }
+#btn-denizen:hover .role-title { color: var(--accent-denizen); }
+
+#btn-occupier:hover { border-color: var(--accent-occupier); }
+#btn-occupier:hover .role-title { color: var(--accent-occupier); }
+
+.divider {
+    font-family: var(--font-heading);
+    color: var(--text-secondary);
+    font-style: italic;
+    opacity: 0.5;
+}
+
+/* Game Dashboard */
+#game-dashboard {
+    flex-direction: column;
+    height: 100%;
+    gap: 1.5rem;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stats-bar {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.game-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--panel-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.narrative-log {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.log-entry {
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease;
+    padding-left: 1rem;
+    border-left: 2px solid transparent;
+}
+
+.log-entry.new {
+    border-color: var(--text-primary);
+}
+
+.action-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+.action-btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--text-primary);
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mode Specific Theming via classes on body or container */
+.mode-denizen .stat-value { color: var(--accent-denizen); }
+.mode-occupier .stat-value { color: var(--accent-occupier); }
