@@ -3,10 +3,12 @@
     --bg-color: #0a0a0c;
     --text-primary: #e0e0e0;
     --text-secondary: #a0a0a0;
-    
-    --accent-denizen: #dfa66a; /* Worn Gold/Dust */
-    --accent-occupier: #4a6fa5; /* Cold Steel Blue */
-    
+
+    --accent-denizen: #dfa66a;
+    /* Worn Gold/Dust */
+    --accent-occupier: #4a6fa5;
+    /* Cold Steel Blue */
+
     --danger: #cf4545;
     --success: #5dae76;
     --panel-bg: rgba(255, 255, 255, 0.03);
@@ -45,8 +47,13 @@ body {
 }
 
 /* Utilities */
-.hidden { display: none !important; }
-.active { display: flex !important; }
+.hidden {
+    display: none !important;
+}
+
+.active {
+    display: flex !important;
+}
 
 /* Main Menu */
 #main-menu {
@@ -54,8 +61,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
     text-align: center;
     animation: fadeIn 1s ease-out;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('cover.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .title {
@@ -103,7 +117,7 @@ body {
     background: rgba(255, 255, 255, 0.07);
     transform: translateY(-2px);
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 .role-title {
@@ -118,11 +132,21 @@ body {
     color: var(--text-secondary);
 }
 
-#btn-denizen:hover { border-color: var(--accent-denizen); }
-#btn-denizen:hover .role-title { color: var(--accent-denizen); }
+#btn-denizen:hover {
+    border-color: var(--accent-denizen);
+}
 
-#btn-occupier:hover { border-color: var(--accent-occupier); }
-#btn-occupier:hover .role-title { color: var(--accent-occupier); }
+#btn-denizen:hover .role-title {
+    color: var(--accent-denizen);
+}
+
+#btn-occupier:hover {
+    border-color: var(--accent-occupier);
+}
+
+#btn-occupier:hover .role-title {
+    color: var(--accent-occupier);
+}
 
 .divider {
     font-family: var(--font-heading);
@@ -218,7 +242,7 @@ body {
 }
 
 .action-btn:hover:not(:disabled) {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-color: var(--text-primary);
 }
 
@@ -228,10 +252,22 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Mode Specific Theming via classes on body or container */
-.mode-denizen .stat-value { color: var(--accent-denizen); }
-.mode-occupier .stat-value { color: var(--accent-occupier); }
+.mode-denizen .stat-value {
+    color: var(--accent-denizen);
+}
+
+.mode-occupier .stat-value {
+    color: var(--accent-occupier);
+}
