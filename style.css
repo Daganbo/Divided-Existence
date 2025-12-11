@@ -205,6 +205,15 @@ body {
     border: 1px solid var(--border-color);
 }
 
+.event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    animation: fadeIn 0.8s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
 .narrative-log {
     display: flex;
     flex-direction: column;

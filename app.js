@@ -110,7 +110,24 @@ function applyPassiveEffects() {
 function generateDailyEvent() {
     clearActions();
 
-    const event = getEventForRole(STATE.role);
+    let event;
+
+    // Special Scripted Events
+    if (STATE.day === 1 && STATE.role === 'denizen') {
+        event = MIDTOWN_ESCAPE_EVENT;
+    } else {
+        event = getEventForRole(STATE.role);
+    }
+
+    // Render logic
+    const sceneContainer = document.getElementById('scene-container');
+    if (event.image) {
+        sceneContainer.innerHTML = `<img src="${event.image}" alt="Scene Visual" class="event-image">`;
+        sceneContainer.classList.remove('hidden');
+    } else {
+        sceneContainer.innerHTML = '<div class="mood-light"></div>';
+    }
+
     log(`Day ${STATE.day}: ${event.title}`);
     log(event.description);
 
@@ -147,6 +164,29 @@ function getEventForRole(role) {
     // Simple random for now
     return pool[Math.floor(Math.random() * pool.length)];
 }
+
+const MIDTOWN_ESCAPE_EVENT = {
+    title: "Midtown Under Siege",
+    description: "You are a mid-level corporate analyst for OmniCorp. The morning coffee is still warm on your desk when the first explosion shatters the glass. Looking out from the 40th floor, you see a rocket impact the adjacent tower. The invasion has begun. You have split seconds to react.",
+    image: "midtown_attack.jpg",
+    choices: [
+        {
+            label: "Grab Emergency Kit & Stairs",
+            outcome: "You knew this day might come. You grab your 'go-bag' from under the desk and hit the fire stairs. You preserve your health but leave suspicious.",
+            effects: { suspicion: 10, health: 0, supplies: 10 }
+        },
+        {
+            label: "Download Data & Run",
+            outcome: "This data could be valuable leverage. You secure the drive but inhale smoke on the way out.",
+            effects: { suspicion: 0, health: -10, supplies: 0 } // Trade health for potential future value (not yet implemented, but narrative flavor)
+        },
+        {
+            label: "Help Coworkers",
+            outcome: "You stop to kelp Karen from HR. It slows you down, and you witness horrors you can't unsee.",
+            effects: { morale: -20, health: -5, suspicion: -5 } // Helping reduces suspicion but hurts morale (if we had it, mapped to health for now)
+        }
+    ]
+};
 
 const DENIZEN_EVENTS = [
     {
